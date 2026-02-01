@@ -1,0 +1,9 @@
+services:
+  gemini-cli:
+    build: .
+    container_name: gemini-cli
+    env_file:
+      - .env
+    stdin_open: true
+    tty: true
+    restart: "no"
