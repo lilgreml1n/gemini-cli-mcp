@@ -1,6 +1,10 @@
 # Gemini CLI - Free Alternative to Claude + MCP Support
 
-Save your Claude tokens! Use Gemini's free tier for general queries WITH MCP tool access.
+**Purpose:**  
+A command-line interface for Google's Gemini models that supports the Model Context Protocol (MCP), allowing it to use the same tools as Claude Desktop.
+
+**Why this exists:**  
+To provide a cost-effective, high-speed, and local-first alternative to Claude Desktop for interacting with the [DGX ecosystem](../sparkforge/README.md). It leverages Gemini's free tier to perform inventory checks and database queries without incurring per-token costs.
 
 ## 🎯 Two Modes
 
@@ -19,8 +23,8 @@ uv run python main_mcp.py
 ## ✨ MCP Mode Features
 
 **Connected MCP Servers:**
-- `inventory` - Inventory management (list, search, update items)
-- `vanna-ai` - SQL queries via natural language
+- `inventory` - Inventory management (list, search, update items) via [inventory-mcp](../inventory-mcp/README.md).
+- `vanna-ai` - SQL queries via natural language.
 
 **Available Tools:**
 - List/search inventory items
@@ -66,13 +70,12 @@ Gemini: [calls vanna-ai_get_training_data tool]
 
 ## Configuration
 
-MCP servers are configured in `main_mcp.py`:
-- inventory: `/Users/raven/Documents/CURRENT_PROJECTS/inventory-mcp/launch-inventory-mcp.sh`
-- vanna-ai: uv run in vanna-mcp-server directory
+MCP servers are configured in `main_mcp.py`. To replicate the setup:
+1.  Ensure `inventory-mcp` is set up and pointing to your DGX.
+2.  Update the path in `main_mcp.py` to point to your `inventory-mcp/run.sh` script.
 
 ## Notes
 
-- MCP mode requires both inventory-mcp and vanna-mcp servers running on DGX
-- Uses Gemini 2.0 Flash with function calling
-- Automatic tool selection based on your queries
-- Keep Claude Desktop for complex workflows; use this for quick queries!
+- MCP mode requires both inventory-mcp and vanna-mcp servers running (or reachable).
+- Uses Gemini 2.0 Flash with function calling.
+- Automatic tool selection based on your queries.
